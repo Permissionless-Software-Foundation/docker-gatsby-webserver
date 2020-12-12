@@ -1,9 +1,19 @@
-gatsby-build:
+gatsby-nginx:
   build: .
   dockerfile: Dockerfile
-  container_name: gatsby-build
+  container_name: gatsby-nginx
   #volumes:
   #  - ../clearweb-files:/clearweb
   #  - ../ipfs-files:/ipfs
   ports:
     - 3000:80
+
+gatsby-tor:
+  image: goldy/tor-hidden-service
+  container_name: gatsby-tor
+  links:
+    - gatsby-nginx
+  environment:
+    GATSBY_NGINX_PORTS: 80:3000
+  volumes:
+    - ./keys:/var/lib/tor/hidden_service/
