@@ -1,0 +1,6 @@
+gatsby-build:
+  build: .
+  dockerfile: Dockerfile
+  container_name: gatsby-build
+volumes:
+  - 
