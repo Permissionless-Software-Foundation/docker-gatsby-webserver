@@ -1,17 +1,8 @@
-FROM ubuntu:18.04 as builder
+FROM christroutner/ct-base-ubuntu-nodev14 as builder
 MAINTAINER Chris Troutner <chris.troutner@gmail.com>
 
 RUN mkdir /clearweb
 RUN mkdir /ipfs
-
-# Update the OS and install any OS packages needed.
-RUN apt-get update
-RUN apt-get install -y sudo git curl nano gnupg wget
-
-# Install Node and NPM
-RUN curl -sL https://deb.nodesource.com/setup_14.x -o nodesource_setup.sh
-RUN bash nodesource_setup.sh
-RUN apt-get install -y nodejs build-essential
 
 # Build the Gatsby site for clearweb
 WORKDIR /root
@@ -22,9 +13,9 @@ RUN npm run build
 RUN cp -r public /clearweb
 
 # Build the Gatsby site for IPFS
-RUN rm -rf public
-RUN npm run build:ipfs
-RUN cp -r public /ipfs
+#RUN rm -rf public
+#RUN npm run build:ipfs
+#RUN cp -r public /ipfs
 
 FROM nginx
 EXPOSE 80
