@@ -1,5 +1,8 @@
-FROM ubuntu:18.04
+FROM ubuntu:18.04 as builder
 MAINTAINER Chris Troutner <chris.troutner@gmail.com>
+
+RUN mkdir /clearweb
+RUN mkdir /ipfs
 
 # Update the OS and install any OS packages needed.
 RUN apt-get update
@@ -16,12 +19,16 @@ RUN git clone https://github.com/Permissionless-Software-Foundation/gatsby-ipfs-
 WORKDIR /root/gatsby-ipfs-web-wallet
 RUN npm install
 RUN npm run build
-RUN cp -r public /root/clearweb
+RUN cp -r public /clearweb
 
 # Build the Gatsby site for IPFS
 RUN rm -rf public
 RUN npm run build:ipfs
-RUN cp -r public /root/ipfs
+RUN cp -r public /ipfs
 
-COPY dummyapp.js dummyapp.js
-CMD ["node", "dummyapp.js"]
+FROM nginx
+EXPOSE 80
+COPY --from=builder /clearweb/public /usr/share/nginx/html
+
+#COPY dummyapp.js dummyapp.js
+#CMD ["node", "dummyapp.js"]

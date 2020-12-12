@@ -2,5 +2,8 @@ gatsby-build:
   build: .
   dockerfile: Dockerfile
   container_name: gatsby-build
-volumes:
-  - 
+  #volumes:
+  #  - ../clearweb-files:/clearweb
+  #  - ../ipfs-files:/ipfs
+  ports:
+    - 3000:80
