@@ -1,5 +1,5 @@
 gatsby-nginx:
-  build: .
+  build: ./nginx-tor/
   dockerfile: Dockerfile
   container_name: gatsby-nginx
   ports:
@@ -14,3 +14,13 @@ gatsby-tor:
     GATSBY_NGINX_PORTS: 80:3000
   volumes:
     - ./keys:/var/lib/tor/hidden_service/
+
+ipfs:
+  build: ./ipfs/
+  dockerfile: Dockerfile
+  container_name: ipfs
+  ports:
+    # host:container
+    - 4110:4001
+  volumes:
+    - ./config:/root/config

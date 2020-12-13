@@ -1,0 +1,17 @@
+{
+  "name": "push-hash",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo no tests yet.",
+    "start": "node push-hash.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@psf/bch-js": "^4.2.0",
+    "bch-message-lib": "^1.8.1",
+    "line-reader": "^0.4.0"
+  }
+}
