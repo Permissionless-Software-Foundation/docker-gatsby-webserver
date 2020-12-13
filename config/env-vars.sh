@@ -5,3 +5,4 @@
 
 export GATSBY_REPO=https://github.com/christroutner/gatsby-ipfs-personal-blog
 export REPO_DIR=gatsby-ipfs-personal-blog
+export NGINX_PORT=3122

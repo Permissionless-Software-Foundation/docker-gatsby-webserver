@@ -18,9 +18,13 @@ WORKDIR /root/$REPO_DIR
 RUN npm install
 RUN npm run build
 
+# Load the NGINX image.
 FROM nginx
 EXPOSE 80
-COPY --from=builder /root/$REPO_DIR/public /usr/share/nginx/html
 
-#COPY dummyapp.js dummyapp.js
-#CMD ["node", "dummyapp.js"]
+# Re-instantiate the environment variable in the new NGINX context.
+ARG REPO_DIR
+ENV REPO_DIR $REPO_DIR
+
+# Copy the files built in the first container to the new NGINX container.
+COPY --from=builder /root/$REPO_DIR/public /usr/share/nginx/html
