@@ -24,12 +24,16 @@ services:
     volumes:
       - ../tor-keys:/var/lib/tor/hidden_service/
 
-# ipfs:
-#   build: ./ipfs/
-#   dockerfile: Dockerfile
-#   container_name: ipfs
-#   ports:
-#     # host:container
-#     - 4110:4001
-#   volumes:
-#     - ./config:/root/config
+  ipfs:
+    build:
+      context: ./ipfs/
+      dockerfile: Dockerfile
+      args:
+        - GATSBY_REPO
+        - REPO_DIR
+    container_name: ipfs
+    ports:
+      # host:container
+      - ${IPFS_PORT}:4001
+    volumes:
+      - ./config:/root/config
