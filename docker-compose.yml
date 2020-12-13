@@ -1,26 +1,33 @@
-gatsby-nginx:
-  build: ./nginx-tor/
-  dockerfile: Dockerfile
-  container_name: gatsby-nginx
-  ports:
-    - 3000:80
+version: "3.9"
+services:
+  gatsby-nginx:
+    build:
+      context: ./nginx-tor/
+      dockerfile: Dockerfile
+      args:
+        - GATSBY_REPO
+        - REPO_DIR
+    container_name: gatsby-nginx
+    ports:
+      - 3000:80
 
-gatsby-tor:
-  image: goldy/tor-hidden-service
-  container_name: gatsby-tor
-  links:
-    - gatsby-nginx
-  environment:
-    GATSBY_NGINX_PORTS: 80:3000
-  volumes:
-    - ./keys:/var/lib/tor/hidden_service/
 
-ipfs:
-  build: ./ipfs/
-  dockerfile: Dockerfile
-  container_name: ipfs
-  ports:
-    # host:container
-    - 4110:4001
-  volumes:
-    - ./config:/root/config
+# gatsby-tor:
+#   image: goldy/tor-hidden-service
+#   container_name: gatsby-tor
+#   links:
+#     - gatsby-nginx
+#   environment:
+#     GATSBY_NGINX_PORTS: 80:3000
+#   volumes:
+#     - ./keys:/var/lib/tor/hidden_service/
+#
+# ipfs:
+#   build: ./ipfs/
+#   dockerfile: Dockerfile
+#   container_name: ipfs
+#   ports:
+#     # host:container
+#     - 4110:4001
+#   volumes:
+#     - ./config:/root/config
