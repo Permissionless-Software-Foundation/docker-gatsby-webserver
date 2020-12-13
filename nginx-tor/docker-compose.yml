@@ -2,9 +2,6 @@ gatsby-nginx:
   build: .
   dockerfile: Dockerfile
   container_name: gatsby-nginx
-  #volumes:
-  #  - ../clearweb-files:/clearweb
-  #  - ../ipfs-files:/ipfs
   ports:
     - 3000:80
 
