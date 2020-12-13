@@ -10,8 +10,8 @@ services:
     container_name: gatsby-nginx
     hostname: gatsby-nginx
     ports:
-      #- ${NGINX_PORT}:80
-      - 3000:80
+      - ${NGINX_PORT}:80
+      #- 3000:80
 
   gatsby-tor:
     image: goldy/tor-hidden-service:0.4.4.6
@@ -19,9 +19,8 @@ services:
     links:
       - gatsby-nginx
     environment:
-      #GATSBY_NGINX_PORTS: 80:${NGINX_PORT}
-      #GATSBY_NGINX_PORTS: 80:3000
-      SERVICE1_TOR_SERVICE_HOSTS: '80:gatsby-nginx:3000'
+      SERVICE1_TOR_SERVICE_HOSTS: '80:gatsby-nginx:80'
+      SERVICE1_TOR_SERVICE_VERSION: '3'
     volumes:
       - ../tor-keys:/var/lib/tor/hidden_service/
 

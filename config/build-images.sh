@@ -9,8 +9,8 @@ echo "Building containers for this repository: "$GATSBY_REPO
 # Re-build the Docker containers.
 cd ..
 docker-compose down
-#docker-compose build
-docker-compose build --no-cache
+docker-compose build
+#docker-compose build --no-cache
 
 # Run the containers
 docker-compose up -d
