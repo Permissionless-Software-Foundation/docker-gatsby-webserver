@@ -7,7 +7,7 @@ MAINTAINER Chris Troutner <chris.troutner@gmail.com>
 # Build the Gatsby site for clearweb
 WORKDIR /root
 RUN git clone https://github.com/christroutner/gatsby-ipfs-personal-blog
-WORKDIR /root/gatsby-ipfs-web-wallet
+WORKDIR /root/gatsby-ipfs-personal-blog
 RUN npm install
 RUN npm run build
 
@@ -18,7 +18,7 @@ RUN npm run build
 
 FROM nginx
 EXPOSE 80
-COPY --from=builder /root/gatsby-ipfs-web-wallet/public /usr/share/nginx/html
+COPY --from=builder /root/gatsby-ipfs-personal-blog/public /usr/share/nginx/html
 
 #COPY dummyapp.js dummyapp.js
 #CMD ["node", "dummyapp.js"]
