@@ -31,9 +31,11 @@ services:
       args:
         - GATSBY_REPO
         - REPO_DIR
+        - IPFS_PORT
+        - IPFS_ADDR
     container_name: ipfs
     ports:
       # host:container
-      - ${IPFS_PORT}:4001
+      - ${IPFS_PORT}:${IPFS_PORT}
     volumes:
       - ./config:/root/config

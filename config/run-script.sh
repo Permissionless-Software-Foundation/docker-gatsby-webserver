@@ -12,6 +12,9 @@ echo "Building containers for this repository: "$GATSBY_REPO
 ipfs daemon &
 sleep 30
 
+# Configured the IPFS node.
+# ipfs config --json Addresses.Swarm '["/ip4/0.0.0.0/tcp/$IPFS_PORT"]'
+
 # Add the compiled Gatsby site to IPFS.
 ipfs add -r /root/$REPO_DIR/public > /root/push-hash/hashes.txt
 #cat /root/config/hashes.txt

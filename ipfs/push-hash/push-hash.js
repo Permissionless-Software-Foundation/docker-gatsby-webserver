@@ -11,11 +11,13 @@ const BchMessageLib = require("bch-message-lib/index.js");
 const bchMsg = new BchMessageLib({ bchjs });
 
 const textfile = "hashes.txt";
-const wif = 'L4PDYJ3zde3VANr9ZrKaVUqrkvBvg7514E2tibUiiVLXtvT85YUs'
-const bchAddr = 'bitcoincash:qqd94dhzzpszm6q0eemlh6xpl22v4upayy9w4706mu'
 
 async function start() {
   try {
+    const wif = process.env.WIF
+    if(!wif) throw new Error('You must pass a WIF private key as an environment variable.')
+
+
     const lines = await readLines(textfile);
     console.log(`input text: ${JSON.stringify(lines, null, 2)}\n`);
 

@@ -11,6 +11,7 @@ ARG GATSBY_REPO
 ENV GATSBY_REPO $GATSBY_REPO
 ARG REPO_DIR
 ENV REPO_DIR $REPO_DIR
+ARG IPFS_PORT
 
 # Build the Gatsby site for clearweb
 WORKDIR /root
@@ -35,8 +36,16 @@ WORKDIR go-ipfs
 RUN ./install.sh
 RUN ipfs init
 
-# Normal IPFS port. This must be exposed.
-EXPOSE 4001
+# Set the port based on environment variables.
+ENV IPFS_PORT $IPFS_PORT
+ARG IPFS_ADDR
+ENV IPFS_ADDR $IPFS_ADDR
+RUN echo "IPFS ADDR: "$IPFS_ADDR
+RUN echo "IPFS PORT: "$IPFS_PORT
+RUN ipfs config --json Addresses.Swarm "$IPFS_ADDR"
+
+# Normal IPFS port (4001). This must be exposed.
+EXPOSE $IPFS_PORT
 # IPFS API. Generally doesn't need to be exposed.
 # EXPOSE 5001
 # Gateway. Does not need to be exposed.
