@@ -8,12 +8,12 @@ echo "Building containers for this repository: "$GATSBY_REPO
 
 # Re-build the Docker containers.
 cd ..
-docker-compose down
-docker-compose build
-#docker-compose build --no-cache
+/usr/local/bin/docker-compose down
+#/usr/local/bin/docker-compose build
+/usr/local/bin/docker-compose build --no-cache
 
 # Run the containers
-docker-compose --project-name $DCNAME up -d 
+/usr/local/bin/docker-compose --project-name $DCNAME up -d 
 
 # Cleanup orphaned images.
 #./config/cleanup-images.sh
