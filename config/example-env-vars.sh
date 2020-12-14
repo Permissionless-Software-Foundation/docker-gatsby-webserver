@@ -12,7 +12,7 @@ export NGINX_PORT=3122
 
 # Port and IPFS multiaddr for serving over IPFS.
 export IPFS_PORT=3222
-export IPFS_ADDR="[\"ip4/0.0.0.0/tcp/$IPFS_PORT\", \"/ip6/::/tcp/$IPFS_PORT\"]"
+export IPFS_ADDR="[\"/ip4/0.0.0.0/tcp/$IPFS_PORT\", \"/ip6/::/tcp/$IPFS_PORT\"]"
 
 # BCH wallet info for writing the IPFS hash to the blockchain.
 export BCHADDR=bitcoincash:qqd94dhzzpszm6q0eemlh6xpl22v4upayy9w4706mu
