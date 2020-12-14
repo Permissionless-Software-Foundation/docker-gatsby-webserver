@@ -7,7 +7,7 @@ services:
       args:
         - GATSBY_REPO
         - REPO_DIR
-    container_name: gatsby-nginx
+    container_name: ${DCNAME}-nginx
     hostname: gatsby-nginx
     ports:
       - ${NGINX_PORT}:80
@@ -15,7 +15,7 @@ services:
 
   gatsby-tor:
     image: goldy/tor-hidden-service:0.4.4.6
-    container_name: gatsby-tor
+    container_name: ${DCNAME}-tor
     links:
       - gatsby-nginx
     environment:
@@ -24,7 +24,7 @@ services:
     volumes:
       - ../tor-keys:/var/lib/tor/hidden_service/
 
-  ipfs:
+  gatsby-ipfs:
     build:
       context: ./ipfs/
       dockerfile: Dockerfile
@@ -33,7 +33,7 @@ services:
         - REPO_DIR
         - IPFS_PORT
         - IPFS_ADDR
-    container_name: ipfs
+    container_name: ${DCNAME}-ipfs
     ports:
       # host:container
       - ${IPFS_PORT}:${IPFS_PORT}

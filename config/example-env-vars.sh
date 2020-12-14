@@ -3,6 +3,9 @@
 # This file sets the environment variables used to build and run the Docker
 # containers.
 
+# Docker container name prefix
+export DCNAME=troutsblog
+
 # Repository information on the Gatsby site that is being published.
 export GATSBY_REPO=https://github.com/christroutner/gatsby-ipfs-personal-blog
 export REPO_DIR=gatsby-ipfs-personal-blog
