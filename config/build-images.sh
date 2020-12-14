@@ -13,7 +13,7 @@ docker-compose build
 #docker-compose build --no-cache
 
 # Run the containers
-docker-compose up -d
+docker-compose --project-name $DCNAME up -d 
 
 # Cleanup orphaned images.
 #./config/cleanup-images.sh

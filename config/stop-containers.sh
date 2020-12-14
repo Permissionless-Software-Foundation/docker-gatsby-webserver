@@ -4,4 +4,4 @@
 source env-vars.sh
 
 cd ..
-docker-compose down
+docker-compose --project-name $DCNAME down
