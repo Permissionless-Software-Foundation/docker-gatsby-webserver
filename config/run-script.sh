@@ -14,6 +14,8 @@ sleep 30
 
 # Configured the IPFS node.
 # ipfs config --json Addresses.Swarm '["/ip4/0.0.0.0/tcp/$IPFS_PORT"]'
+echo "IPFS ADDR: "$IPFS_ADDR
+ipfs config --json Addresses.Swarm "$IPFS_ADDR"
 
 # Add the compiled Gatsby site to IPFS.
 ipfs add -r /root/$REPO_DIR/public > /root/push-hash/hashes.txt
