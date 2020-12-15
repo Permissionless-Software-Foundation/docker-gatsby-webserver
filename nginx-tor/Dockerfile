@@ -15,7 +15,7 @@ WORKDIR /root
 RUN echo "Building for repo: "$GATSBY_REPO
 RUN git clone $GATSBY_REPO
 WORKDIR /root/$REPO_DIR
-RUN npm install
+RUN npm install --silent
 RUN npm run build
 
 # Load the NGINX image.

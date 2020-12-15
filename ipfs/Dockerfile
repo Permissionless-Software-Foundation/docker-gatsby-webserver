@@ -21,14 +21,14 @@ WORKDIR /root
 RUN echo "Building for repo: "$GATSBY_REPO
 RUN git clone $GATSBY_REPO
 WORKDIR /root/$REPO_DIR
-RUN npm install
+RUN npm install --silent
 RUN npm run build
 
 # Build the push-hash app for writing the IPFS hash to the blockchain.
 WORKDIR /root
 COPY push-hash push-hash
 WORKDIR /root/push-hash
-RUN npm install
+RUN npm install --silent
 
 # Install IPFS
 WORKDIR /root
