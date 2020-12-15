@@ -11,8 +11,6 @@ ARG GATSBY_REPO
 ENV GATSBY_REPO $GATSBY_REPO
 ARG REPO_DIR
 ENV REPO_DIR $REPO_DIR
-ARG IPFS_PORT
-ENV IPFS_PORT $IPFS_PORT
 ARG WIF
 ENV WIF $WIF
 
@@ -40,12 +38,13 @@ RUN ./install.sh
 RUN ipfs init
 
 # Set the port based on environment variables.
+ARG IPFS_PORT
 ENV IPFS_PORT $IPFS_PORT
-ARG IPFS_ADDR
-ENV IPFS_ADDR $IPFS_ADDR
-RUN echo "IPFS ADDR: "$IPFS_ADDR
-RUN echo "IPFS PORT: "$IPFS_PORT
-RUN ipfs config --json Addresses.Swarm "$IPFS_ADDR"
+#ARG IPFS_ADDR
+#ENV IPFS_ADDR $IPFS_ADDR
+#RUN echo "IPFS ADDR: "$IPFS_ADDR
+#RUN echo "IPFS PORT: "$IPFS_PORT
+#RUN ipfs config --json Addresses.Swarm "$IPFS_ADDR"
 
 # Normal IPFS port (4001). This must be exposed.
 EXPOSE $IPFS_PORT
