@@ -33,6 +33,7 @@ services:
         - REPO_DIR
         - IPFS_PORT
         - IPFS_ADDR
+        - WIF
     container_name: ${DCNAME}-ipfs
     ports:
       # host:container
