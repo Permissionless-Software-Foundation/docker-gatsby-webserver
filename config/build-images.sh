@@ -6,13 +6,14 @@
 source env-vars.sh
 echo "Building containers for this repository: "$GATSBY_REPO
 
-# Re-build the Docker containers.
+# Bring down the Docker containers.
 cd ..
-/usr/local/bin/docker-compose down
+/usr/local/bin/docker-compose --project-name $DCNAME down
 
 # Cleanup orphaned images.
 ./config/cleanup-images.sh
 
+# Rebuild the Docker containers
 #/usr/local/bin/docker-compose build
 /usr/local/bin/docker-compose build --no-cache
 
