@@ -8,14 +8,14 @@
 source env-vars.sh
 echo "Building containers for this repository: "$GATSBY_REPO
 
-# Launch the IPFS daemon and give it some time to start.
-ipfs daemon &
-sleep 30
-
 # Configured the IPFS node.
 # ipfs config --json Addresses.Swarm '["/ip4/0.0.0.0/tcp/$IPFS_PORT"]'
 echo "IPFS ADDR: "$IPFS_ADDR
 ipfs config --json Addresses.Swarm "$IPFS_ADDR"
+
+# Launch the IPFS daemon and give it some time to start.
+ipfs daemon &
+sleep 30
 
 # Add the compiled Gatsby site to IPFS.
 ipfs add -r /root/$REPO_DIR/public > /root/push-hash/hashes.txt
