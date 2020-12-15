@@ -2,6 +2,8 @@
 
 The purpose of this repository is to create a series of Docker containers, orchestrated with Docker Compose, to deploy a Gatsby website and serve the website over clearnet (nginx), Tor, and IPFS, simultaneously.
 
+The network syndication can be customized any way. e.g. It's possible to turn off clearnet and IPFS syndication, and just serve the website over Tor. Any combination is possible.
+
 The build and deployment is started by running the [build-images.sh](./config/build-images.sh) shell script. This script is intended to be executed by a webhook, triggered from GitHub, by pushing to the `master` branch of the Gatsby website repository.
 
 This app is customized by creating and editing a `env-vars.sh` shells script in the `config` directory. This file is called by `build-images.sh`.
