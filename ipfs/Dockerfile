@@ -30,7 +30,7 @@ RUN npm install --silent
 
 # Install IPFS
 WORKDIR /root
-RUN wget https://dist.ipfs.io/go-ipfs/v0.6.0/go-ipfs_v0.6.0_linux-amd64.tar.gz
+RUN wget -q https://dist.ipfs.io/go-ipfs/v0.6.0/go-ipfs_v0.6.0_linux-amd64.tar.gz
 RUN tar -xvf go-ipfs_v0.6.0_linux-amd64.tar.gz
 RUN rm go-ipfs_v0.6.0_linux-amd64.tar.gz
 WORKDIR go-ipfs
