@@ -20,7 +20,7 @@ RUN echo "Building for repo: "$GATSBY_REPO
 RUN git clone $GATSBY_REPO
 WORKDIR /root/$REPO_DIR
 RUN npm install --silent
-RUN CI=true npm run build
+RUN CI=true npm run build:ipfs
 
 # Build the push-hash app for writing the IPFS hash to the blockchain.
 WORKDIR /root
