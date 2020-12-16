@@ -13,6 +13,9 @@ echo "Building containers for this repository: "$GATSBY_REPO
 echo "IPFS ADDR: "$IPFS_ADDR
 ipfs config --json Addresses.Swarm "$IPFS_ADDR"
 
+# Print out the node id to the Docker log.
+ipfs id
+
 # Launch the IPFS daemon and give it some time to start.
 ipfs daemon &
 sleep 30
