@@ -29,7 +29,7 @@ Third, copy the [example-env-vars.sh](./config/example-env-vars.sh) shell script
 ## Usage
 This repository is now ready to be deployed by a webhook. The webhook should trigger execution of the `build-images.sh` script. That will build and deploy the containers, which will download and build the Gatsby site. [webhook-cli](https://www.npmjs.com/package/webhook-cli) works well, and has [examples for GitHub](https://github.com/sigoden/webhook/wiki/Hook-Examples#incoming-github-webhook).
 
-This back end web server is intended to be paired with [this front end Gatsby Template](https://github.com/Permissionless-Software-Foundation/gatsby-ipfs-template).
+This back end web server is intended to be paired with [this front end Gatsby Template](https://github.com/Permissionless-Software-Foundation/gatsby-ipfs-template). A live version of that template can be found at [UncensorablePublishing.com](https://uncensorablepublishing.com).
 
 Not all containers need to run, and not all ports need to be exposed. For example, you could refrain from exposing the NGINX port 80 to the world, and just serve the website over Tor and IPFS.
 
