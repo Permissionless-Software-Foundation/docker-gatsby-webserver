@@ -31,6 +31,6 @@ This repository is now ready to be deployed by a webhook. The webhook should tri
 
 This back end web server is intended to be paired with [this front end Gatsby Template](https://github.com/Permissionless-Software-Foundation/gatsby-ipfs-template). A live version of that template can be found at [UncensorablePublishing.com](https://uncensorablepublishing.com).
 
-Not all containers need to run, and not all ports need to be exposed. For example, you could refrain from exposing the NGINX port 80 to the world, and just serve the website over Tor and IPFS.
+Not all containers need to run, and not all ports need to be exposed. For example, you could refrain from exposing the clear web to the world via NGINX port 80, and just serve the website over Tor and IPFS.
 
-If censorship is a concern, other people can pin the IPFS hash to help syndicate your website. The IPFS is automatically written to the BCH blockchain using the [memo.cash protocol](https://memo.cash/protocol), which can allows it to be searched and easily syndicated.
+If censorship is a concern, other people can pin the IPFS hash to help syndicate your website. The IPFS is automatically written to the BCH blockchain using the [memo.cash protocol](https://memo.cash/protocol), which allows it to be searched for and easily syndicated.
