@@ -17,6 +17,8 @@ docker rmi $NAME1
 export NAME2=$DCNAME"_gatsby-ipfs"
 echo "Deleting Docker image: "$NAME2
 docker rmi $NAME2
+docker rmi docker-gatsby-webserver_gatsby-nginx
+docker rmi docker-gatsby-webserver_ipfs
 
 # Cleanup orphaned images.
 ./config/cleanup-images.sh
