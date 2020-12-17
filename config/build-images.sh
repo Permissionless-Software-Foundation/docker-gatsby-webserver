@@ -10,6 +10,14 @@ echo "Building containers for this repository: "$GATSBY_REPO
 cd ..
 /usr/local/bin/docker-compose --project-name $DCNAME down
 
+# Delete the images to force a rebuild without a cache.
+export NAME1=$DCNAME"_gatsby-nginx"
+echo "Deleting Docker image: "$NAME1
+docker rmi $NAME1
+export NAME2=$DCNAME"_gatsby-ipfs"
+echo "Deleting Docker image: "$NAME2
+docker rmi $NAME2
+
 # Cleanup orphaned images.
 ./config/cleanup-images.sh
 

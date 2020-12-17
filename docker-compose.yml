@@ -11,7 +11,6 @@ services:
     hostname: gatsby-nginx
     ports:
       - ${NGINX_PORT}:80
-      #- 3000:80
 
   gatsby-tor:
     image: goldy/tor-hidden-service:0.4.4.6
