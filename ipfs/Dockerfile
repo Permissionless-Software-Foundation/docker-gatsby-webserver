@@ -35,7 +35,7 @@ RUN tar -xvf go-ipfs_v0.6.0_linux-amd64.tar.gz
 RUN rm go-ipfs_v0.6.0_linux-amd64.tar.gz
 WORKDIR go-ipfs
 RUN ./install.sh
-RUN ipfs init
+RUN ipfs init --profile=server
 
 # Set the port based on environment variables.
 ARG IPFS_PORT
