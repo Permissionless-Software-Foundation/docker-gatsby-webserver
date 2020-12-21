@@ -8,6 +8,9 @@ The build and deployment is started by running the [build-images.sh](./config/bu
 
 This app is customized by creating and editing a `env-vars.sh` shells script in the `config` directory. This file is called by `build-images.sh`.
 
+A walk through video of how to install and use these Docker containers is available:
+https://youtu.be/JJfxYKWV9JQ
+
 ## Installation
 First, install Docker:
 ```
