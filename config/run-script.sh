@@ -12,6 +12,8 @@ echo "Building containers for this repository: "$GATSBY_REPO
 # ipfs config --json Addresses.Swarm '["/ip4/0.0.0.0/tcp/$IPFS_PORT"]'
 echo "IPFS ADDR: "$IPFS_ADDR
 ipfs config --json Addresses.Swarm "$IPFS_ADDR"
+ipfs config --json Swarm.ConnMgr.HighWater 50
+ipfs config --json Swarm.ConnMgr.LowWater 30
 
 # Print out the node id to the Docker log.
 ipfs id

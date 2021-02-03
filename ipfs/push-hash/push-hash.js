@@ -14,9 +14,11 @@ const textfile = "hashes.txt";
 
 async function start() {
   try {
-    const wif = process.env.WIF
-    if(!wif) throw new Error('You must pass a WIF private key as an environment variable.')
-
+    const wif = process.env.WIF;
+    if (!wif)
+      throw new Error(
+        "You must pass a WIF private key as an environment variable."
+      );
 
     const lines = await readLines(textfile);
     console.log(`input text: ${JSON.stringify(lines, null, 2)}\n`);
@@ -28,21 +30,29 @@ async function start() {
     const splitLine = lastLine.split(" ");
     console.log(`splitLine: ${JSON.stringify(splitLine, null, 2)}\n`);
 
-    const targetHash = splitLine[1]
+    const targetHash = splitLine[1];
     console.log(`target hash: ${targetHash}\n`);
 
-    const hex = await bchMsg.memo.memoPush(targetHash, wif, 'IPFS UPDATE ')
-    // console.log(`hex: ${hex}`)
+    let hex = "";
+    let txid = "";
+    try {
+      hex = await bchMsg.memo.memoPush(targetHash, wif, "IPFS UPDATE ");
+      // console.log(`hex: ${hex}`)
 
-    const txid = await bchjs.RawTransactions.sendRawTransaction(hex)
-    console.log(`txid: ${txid}`)
+      const txid = await bchjs.RawTransactions.sendRawTransaction(hex);
+      console.log(`txid: ${txid}`);
+    } catch (err) {
+      console.log(
+        "Could not write to the blockchain! Does the WIF have enough BCH to pay the transaction fee?"
+      );
+    }
 
     // Run a loop to keep the Docker container running.
-    setInterval(function () {
-      const now = new Date()
-      console.log(`Timestamp: ${now.toLocaleString()}`)
-      console.log(`IPFS hash: ${targetHash}, BCH TXID: ${txid}`)
-    }, 60000)
+    setInterval(function() {
+      const now = new Date();
+      console.log(`Timestamp: ${now.toLocaleString()}`);
+      console.log(`IPFS hash: ${targetHash}, BCH TXID: ${txid}`);
+    }, 60000);
   } catch (err) {
     console.error(err);
   }
